@@ -1,0 +1,44 @@
+<section class="container">
+  <article class="switch_controls">
+      <div class="form-group">
+          <div class="form-row form-errors" *ngIf="errors">
+              <span>Oops! looks like some errors occured</span>
+              {{errors}}
+          </div>
+          <div class="form-row">
+              <label for="" class="form-label">X Coordinate</label>
+              <input type="number"  [(ngModel)]="xIndex" min="0">
+          </div>
+          <div class="form-row">
+              <label for="" class="form-label">Y Coordinate</label>
+              <input type="number" [(ngModel)]="yIndex" min="0">
+          </div>
+
+          <div class="form-row">
+              <label>
+                  <input type="radio" [(ngModel)]="manualToggle" [value]="true" name="switchGrp" >
+                  <span> ON </span>
+              </label>
+              <label>
+                  <input type="radio" [(ngModel)]="manualToggle" [value]="false" name="switchGrp" >
+                  <span> OFF </span>
+              </label>
+          </div>
+          <div class="form-row">
+              <button type="button" (click)="switchOverride();" >Confirm</button>
+              <button type="button" (click)="resetAll();">Reset</button>
+          </div>
+      </div>
+  </article>
+
+  <article class="switch_form">
+      <div class="switch_group"  *ngFor="let btn of btns; let i = index" id="{{ i }}">
+          <button *ngFor="let data of btn" id="{{ i + data }}"
+          class="switch"
+          (click)="toggleSwitch($event.target);"
+          type="button"> 
+          </button>
+      </div>
+      
+  </article>
+</section>
